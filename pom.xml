@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <parent>
+    <artifactId>cbp-parent</artifactId>
+    <groupId>com.jrock</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>HibernateKnowledgeBase</groupId>
+  <artifactId>HibernateKnowledgeBase</artifactId>
+  <name>Maven Quick Start Archetype</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate</artifactId>
+    	<version>3.2.6.ga</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-annotations</artifactId>
+    	<version>3.3.0.ga</version>
+    </dependency>
+  </dependencies>
+</project>
