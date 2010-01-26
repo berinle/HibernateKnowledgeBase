@@ -17,7 +17,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	private SessionFactory sessionFactory;
 	
 	public void edit(Employee emp) {
-		getSession().update(emp);
+		//getting org.hibernate.NonUniqueObjectException: a different object with the same identifier value was already associated with the session: [net.berinle.model.Employee#2]
+		//getSession().update(emp);
+		
+		//WORKS JUST FINE
+		getSession().merge(emp);
 	}
 	
 	public Session getSession(){
