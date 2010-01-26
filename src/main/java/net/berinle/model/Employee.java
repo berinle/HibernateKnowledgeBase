@@ -1,5 +1,6 @@
 package net.berinle.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -21,7 +22,7 @@ public class Employee {
 	private Long id;
 	private String name;
 	
-	private Set<Company> companies;
+	private Set<Company> companies = new HashSet<Company>();
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -57,5 +58,15 @@ public class Employee {
 
 	public void setCompanies(Set<Company> companies) {
 		this.companies = companies;
+	}
+
+	public void addCompany(Company company) {
+		this.companies.add(company);
+		company.getEmployees().add(this);
+	}
+
+	public void removeCompany(Company company) {
+		this.companies.remove(company);
+		company.getEmployees().remove(this);
 	}
 }

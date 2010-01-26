@@ -1,5 +1,6 @@
 package net.berinle.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ public class Company {
 
 	private Long id;
 	private String name;
-	private Set<Employee> employees;
+	private Set<Employee> employees = new HashSet<Employee>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

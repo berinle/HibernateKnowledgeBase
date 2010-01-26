@@ -27,5 +27,15 @@
     	<artifactId>hibernate-annotations</artifactId>
     	<version>3.3.0.ga</version>
     </dependency>
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.9</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-commons-annotations</artifactId>
+    	<version>3.3.0.ga</version>
+    </dependency>
   </dependencies>
 </project>
