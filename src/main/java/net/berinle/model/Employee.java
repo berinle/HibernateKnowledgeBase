@@ -23,6 +23,7 @@ public class Employee {
 	private String name;
 	
 	private Set<Company> companies = new HashSet<Company>();
+	private Set<Skill> skills = new HashSet<Skill>();
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -68,5 +69,24 @@ public class Employee {
 	public void removeCompany(Company company) {
 		this.companies.remove(company);
 		company.getEmployees().remove(this);
+	}
+	
+	public void addSkill(Skill skill){
+		skills.add(skill);
+		skill.getEmployees().add(this);
+	}
+	
+	public void removeSkill(Skill skill){
+		skills.remove(skill);
+		skill.getEmployees().remove(this);
+	}
+
+	@ManyToMany(mappedBy="employees")
+	public Set<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(Set<Skill> skills) {
+		this.skills = skills;
 	}
 }

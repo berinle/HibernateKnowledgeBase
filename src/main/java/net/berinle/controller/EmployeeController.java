@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import net.berinle.model.Employee;
 import net.berinle.service.CompanyService;
 import net.berinle.service.EmployeeService;
+import net.berinle.service.SkillService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	@Autowired
 	private CompanyService companyService;
+	@Autowired
+	private SkillService skillService;
 	
 	@RequestMapping(value="/employee/list.do", method=RequestMethod.GET)
 	public void list(Model model){
@@ -34,14 +37,17 @@ public class EmployeeController {
 	public void edit(@RequestParam(required=true) Long id, Model model){
 		model.addAttribute("employee", employeeService.getEmployee(id));
 		model.addAttribute("companies", companyService.getAllCompanies());
+		model.addAttribute("skills", skillService.getAllSkills());
 	}
 	
 	@RequestMapping(value="/employee/edit.do", method=RequestMethod.POST)
 	public String edit(@ModelAttribute Employee emp, BindingResult result, HttpServletRequest request){
 		//String[] companyIds = ServletRequestUtils.getStringParameters(request, "companies");
 		String[] companyIds = ServletRequestUtils.getStringParameters(request, "companyIds");
+		String[] skillIds = ServletRequestUtils.getStringParameters(request, "skillIds");
+		
 		if(!result.hasErrors()){
-			employeeService.editEmployee(emp, companyIds);
+			employeeService.editEmployee(emp, companyIds, skillIds);
 		}
 		
 		return "redirect:list.do";

@@ -6,7 +6,7 @@ import net.berinle.model.Employee;
 
 public interface EmployeeService {
 
-	void editEmployee(Employee emp, String[] companyIds);
+	void editEmployee(Employee emp, String[] companyIds, String[] skillIds);
 
 	List<Employee> getAllEmployees();
 

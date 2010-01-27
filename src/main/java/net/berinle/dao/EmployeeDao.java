@@ -6,7 +6,7 @@ import net.berinle.model.Employee;
 
 public interface EmployeeDao {
 
-	void edit(Employee emp);
+	Employee edit(Employee emp);
 
 	List<Employee> getAll();
 
