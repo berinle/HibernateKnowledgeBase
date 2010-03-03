@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?><project>
-  <parent>
-    <artifactId>cbp-parent</artifactId>
-    <groupId>com.jrock</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>HibernateKnowledgeBase</groupId>
   <artifactId>HibernateKnowledgeBase</artifactId>
+  <packaging>war</packaging>
   <name>Maven Quick Start Archetype</name>
   <version>0.0.1-SNAPSHOT</version>
   <url>http://maven.apache.org</url>
+  
+  <build>
+    <sourceDirectory>${basedir}/src</sourceDirectory>
+    <outputDirectory>${basedir}/web/WEB-INF/classes</outputDirectory>
+    <resources>
+      <resource>
+        <directory>${basedir}/src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <webappDirectory>${basedir}/web</webappDirectory>
+          <warSourceDirectory>${basedir}/web</warSourceDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
