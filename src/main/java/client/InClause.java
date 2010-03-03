@@ -15,14 +15,17 @@ public class InClause {
 		Session s = sessionFactory.openSession();
 		s.beginTransaction();
 		
-		List<Long> ids = s.createQuery("select id from Person").list();
+		List<Long> ids = s.createQuery("select id from Person where id < 20000").list();
 		System.out.println("# of ids: " + ids.size());
 		
-		s.createCriteria(Person.class)
+		List<Person> resultList = s.createCriteria(Person.class)
 		.add(Restrictions.in("id", ids))
 		.list();
 		
 		s.getTransaction().commit();
 		s.close();
+		sessionFactory.close();
+		
+		System.out.println("return list size: " + resultList.size());
 	}
 }

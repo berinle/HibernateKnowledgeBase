@@ -26,6 +26,7 @@
 	<mapping class="net.berinle.model.Skill"/>
 	<mapping class="net.berinle.model.Body"/>
 	<mapping class="net.berinle.model.Hand"/>
+	<mapping class="net.berinle.model.Person"/>
 	
 </session-factory>
 
