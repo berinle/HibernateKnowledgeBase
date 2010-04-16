@@ -41,7 +41,7 @@ public class SybaseInClause {
 				endIndex = startIndex + 100;
 				subList = ids.subList(startIndex, endIndex);
 				params = getParameterList(subList);
-				crit.add(Restrictions.in("id", params));
+				crit.add(Restrictions.in("id", subList));
 				
 				result.add(crit.list());
 				
@@ -55,7 +55,7 @@ public class SybaseInClause {
 			
 			subList = ids.subList(startIndex, endIndex);
 			params = getParameterList(subList);
-			crit.add(Restrictions.in("id", params));
+			crit.add(Restrictions.in("id", subList));
 							
 			result.add(crit.list());			
 		}
