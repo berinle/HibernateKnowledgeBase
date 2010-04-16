@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="net.berinle.model">
+
+	<sql-query name="sp_getemployees" callable="true">		  
+        <return alias="emp" class="SPEmployee">  
+	        <return-property name="id" column="id"/>  
+	        <return-property name="firstName" column="fname"/>  
+	        <return-property name="lastName" column="lname"/>  
+	        <return-property name="hireDate" column="hire_date"/>
+	        <return-property name="employeeNo" column="emp_no"/>  
+        </return>  
+        { ? = call sp_getemployees(?,?) }  
+    </sql-query>  
+   	
+	<!--  
+	<sql-query name="">
+	<![CDATA[
+	]]>
+	</sql-query>
+	-->		
+	
+</hibernate-mapping>
