@@ -11,9 +11,10 @@
 	        <return-property name="firstName" column="fname"/>  
 	        <return-property name="lastName" column="lname"/>  
 	        <return-property name="hireDate" column="hire_date"/>
-	        <return-property name="employeeNo" column="emp_no"/>  
+	        <return-property name="employeeNo" column="emp_no"/>
+	        <return-property name="version" column="version"/>    
         </return>  
-        { ? = call sp_getemployees(?,?) }  
+        { call sp_getemployees(:param1,:param2) }  
     </sql-query>  
    	
 	<!--  

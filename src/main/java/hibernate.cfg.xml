@@ -28,6 +28,10 @@
 	<mapping class="net.berinle.model.Hand"/>
 	<mapping class="net.berinle.model.Person"/>
 	
+	<mapping class="net.berinle.model.SPEmployee"/>
+	
+	<mapping resource="stored-procs.hbm.xml"/>
+	
 </session-factory>
 
 </hibernate-configuration>

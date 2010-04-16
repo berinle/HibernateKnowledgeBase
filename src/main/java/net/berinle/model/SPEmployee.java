@@ -7,9 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 @Entity
+@Table(name="SP_EMPLOYEE")
 public class SPEmployee {
 
 	@Id
@@ -67,6 +71,10 @@ public class SPEmployee {
 	}
 	public void setVersion(long version) {
 		this.version = version;
+	}
+	
+	public String toString(){
+		return ToStringBuilder.reflectionToString(this);
 	}
 	
 }
