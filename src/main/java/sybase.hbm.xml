@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="net.berinle.model">
+	<import class="net.berinle.model.SybaseResult"/>
+
+	<sql-query name="pqbGetRoundPwb" callable="true" read-only="true" timeout="120">		  
+        <return alias="result" class="SybaseResult">  
+			<return-property name="bipId" column="bip_id"/>
+			<return-property name="bipType" column="bip_type"/>
+			<return-property name="bidUnits" column="bid_units"/>
+			<return-property name="bipName" column="bip_name"/>
+			<return-property name="itemTotal" column="item_total"/>
+			<return-property name="bidderId" column="bidder_id"/>
+			<return-property name="bidderType" column="bidder_type"/>
+			<return-property name="bidderName" column="bidder_name"/>
+			<return-property name="roundNum" column="round_num"/>
+			<return-property name="bidAmt" column="bid_amt"/>
+	        <return-property name="bipDesc" column="bip_desc"/>    
+        </return>  
+        { call pqbGetRoundPwb(:auctionId,:roundNum,:sortColumn,:sortOrder) }  
+    </sql-query>  
+   	
+	<!--  
+	<sql-query name="">
+	<![CDATA[
+	]]>
+	</sql-query>
+	-->		
+	
+</hibernate-mapping>

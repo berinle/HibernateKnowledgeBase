@@ -8,7 +8,7 @@
 <session-factory>
 	
 	<!-- for HSQL --> 
-	<property name="hibernate.connection.url">jdbc:sybase:Tds:bann:2025/bid4</property>		
+	<property name="hibernate.connection.url">jdbc:sybase:Tds:bann:2025/auctions_query</property>		
 	<property name="hibernate.connection.username">cf_bidder</property>
 	<property name="hibernate.connection.password"></property>
 	<!-- 
@@ -24,7 +24,11 @@
     <property name="current_session_context_class">thread</property>
      -->
      
+     
      <mapping class="net.berinle.model.Item"/>
+     <mapping class="net.berinle.model.SybaseResult"/>
+     
+     <mapping resource="sybase.hbm.xml"/>
     
 </session-factory>
 

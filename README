@@ -1,0 +1,53 @@
+With Sybase, when you try running a procedure via Hibernate, you get the following error...
+
+13:15:40,818 DEBUG SQL:401 - { call pqbGetRoundPwb(?,?,?,?) }
+Hibernate: { call pqbGetRoundPwb(?,?,?,?) }
+13:15:40,881  WARN JDBCExceptionReporter:77 - SQL Error: 7713, SQLState: ZZZZZ
+13:15:40,881 ERROR JDBCExceptionReporter:78 - Stored procedure 'pqbGetRoundPwb' may be run only in unchained transaction mode. The 'SET CHAINED OFF' command will cause the current session to use unchained transaction mode.
+
+
+With 'anymode', the new error is this...
+
+The 'CREATE TABLE' command is not allowed within a multi-statement transaction in the 'tempdb' database.
+
+
+TODO:
+=====
+Investigate why that is the case, and explore you options
+
+CHANGES
+=======
+1) Change procedures to execute in 'anymode'
+
+EXEC sp_procxmode <procedure name>,'anymode'
+go
+
+2) Tell DBA's to change the 'ddl in tran' option to true for that database!
+
+sp_dboption <database_name>,"ddl in tran", true
+
+See http://manuals.sybase.com/onlinebooks/group-as/asg1250e/sqlug/@Generic__BookTextView/53037
+
+OBSERVATIONS
+============
+Going via spring works to execute stored proc without 'multi-statement tx' error message, but doing
+it directly via Hibernate is causing issues!
+
+See: https://forums.hibernate.org/viewtopic.php?p=2270133&sid=7a5c8c2129339c76e4ea430eb11789e9
+
+The long and short of the story...
+
+I too am having the problem. 
+
+Yes ... this is a Sybase issue in a sense. 
+
+The reason is that, when hibernate ... or in this case, JConnect JDBC goes off to find the columns of the table, it calls the stored procedure sp_jdbc_columns. 
+
+The problem here is, that procedure creates a temporary table in tempdb, ... and the JDBC connection is set to autocommit=false by default ... and you cannot have "create table" commands while in the "middle" of a database transaction. 
+
+The only way to call these metadata stored procedures is to have autocommit set to true. 
+
+Is there anyway we can have this set to true only when calling the stored procs ?? ... and then return to autocommit = false ?? 
+
+Anyone else have a better idea / solution ??
+
