@@ -15,7 +15,7 @@ import net.berinle.model.Employee;
 import net.berinle.model.Skill;
 import net.berinle.service.EmployeeService;
 
-@Service
+@Service("employeeService")
 @Transactional(readOnly=true)
 public class EmployeeServiceImpl implements EmployeeService{
 
@@ -64,6 +64,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	public Employee getEmployee(Long id) {
 		return employeeDao.get(id);
+	}
+
+	public void add(Employee emp) {
+		employeeDao.edit(emp);
 	}
 
 }

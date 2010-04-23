@@ -16,6 +16,13 @@
 	 
 	
 	<property name="hibernate.show_sql">true</property>
+	
+	<property name="hibernate.current_session_context_class">thread</property>
+	<!-- 
+	<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+	<property name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.WeblogicTransactionManagerLookup</property>
+	 -->
+	
 	<!-- 
 	<property name="hibernate.hbm2ddl.auto">create</property>
     <property name="current_session_context_class">thread</property>

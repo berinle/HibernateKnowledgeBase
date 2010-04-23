@@ -11,4 +11,6 @@ public interface EmployeeService {
 	List<Employee> getAllEmployees();
 
 	Employee getEmployee(Long id);
+
+	void add(Employee emp);
 }
