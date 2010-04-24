@@ -13,4 +13,6 @@ public interface EmployeeService {
 	Employee getEmployee(Long id);
 
 	void add(Employee emp);
+
+	void doMultipleThings();
 }

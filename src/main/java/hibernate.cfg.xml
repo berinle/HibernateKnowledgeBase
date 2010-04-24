@@ -16,15 +16,20 @@
 	 
 	
 	<property name="hibernate.show_sql">true</property>
-	
+		
+	<!-- Spring's HibernateTransactionManager rather expects to work with its own Session context management, i.e. SpringSessionContext. 
+	See: http://jira.springframework.org/browse/SPR-3912 	
 	<property name="hibernate.current_session_context_class">thread</property>
-	<!-- 
+	 -->
+	 	
+	<!--	 
 	<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
 	<property name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.WeblogicTransactionManagerLookup</property>
 	 -->
 	
+	<property name="hibernate.hbm2ddl.auto">update</property>
+	
 	<!-- 
-	<property name="hibernate.hbm2ddl.auto">create</property>
     <property name="current_session_context_class">thread</property>
      -->
     

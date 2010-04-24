@@ -17,12 +17,12 @@ import net.berinle.model.Employee;
 import net.berinle.model.Skill;
 import net.berinle.service.EmployeeService;
 
-@Service("employeeService")
+@Service("employeeServiceUsingHibernateTemplate")
 @Transactional(readOnly=true)
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceUsingTemplateImpl implements EmployeeService{
 
 	@Autowired
-	@Qualifier(value="employeeDao")
+	@Qualifier(value="employeeDaoHibernateTemplate")
 	private EmployeeDao employeeDao;
 	
 	@Autowired

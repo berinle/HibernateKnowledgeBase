@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import net.berinle.dao.EmployeeDao;
 import net.berinle.model.Employee;
 
-@Repository
+@Repository("employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Autowired

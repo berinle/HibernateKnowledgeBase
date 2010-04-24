@@ -10,12 +10,16 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 	
+	<bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="classpath:sybase.properties">
+	</bean>
+	
 	<tx:annotation-driven/>
 	
 	<context:component-scan base-package="net.berinle.dao"/>
 	<context:component-scan base-package="net.berinle.service"/>
 	<context:component-scan base-package="net.berinle.controller"/>
-	
+		
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -26,10 +30,10 @@
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.sybase.jdbc3.jdbc.SybDataSource"/>
-		<property name="url" value="jdbc:sybase:Tds:bann:2025/auctions_query"/>
-		<property name="username" value="cf_bidder"/>
-		<property name="password" value=""/>
+		<property name="driverClassName" value="${db.driver}"/>
+		<property name="url" value="${db.url}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
 	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
